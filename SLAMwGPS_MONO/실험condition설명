@@ -1,0 +1,39 @@
+4. frame 조건 한개만(c2대신 inlier 개수 20으로 림늘), weight는 그대로 
+5. frame 조건 한개만 (c2 대신 inlier 개수 10개로 줄임), weight 그대로
+6. frame 조건 const bool c3 = (mnMatchesInliers>10);
+
+change_
+1. fDistance<0.1
+const bool c1b = (mCurrentFrame.mnId>=mnLastKeyFrameId+mMinFrames && bLocalMappingIdle);
+    // Condition 2: Few tracked points compared to reference keyframe. Lots of visual odometry compared to map matches.
+    const bool c2 = ((mnMatchesInliers<nRefMatches*thRefRatio|| bNeedToInsertClose) && mnMatchesInliers>15);
+    const bool c3 = ((mCurrentFrame.GetDistanceWithGPS(mpLastKeyFrame->GetGPSData()))<5.0);
+0808
+const bool c1a = mCurrentFrame.mnId>=mnLastKeyFrameId+mMaxFrames;
+    // Condition 1b: More than "MinFrames" have passed and Local Mapping is idle
+    const bool c1b = (mCurrentFrame.mnId>=mnLastKeyFrameId+mMinFrames && bLocalMappingIdle);
+    // Condition 2: Few tracked points compared to reference keyframe. Lots of visual odometry compared to map matches.
+    const bool c2 = ((mnMatchesInliers<nRefMatches*thRefRatio|| bNeedToInsertClose) && mnMatchesInliers>15);
+    const bool c3 = ((mCurrentFrame.GetDistanceWithGPS(mpLastKeyFrame->GetGPSData()))>0.05);
+     double fDistance = mCurrentFrame.GetDistanceWithGPS(mLastFrame.GetGPSData());
+// *Distance 값 바꿔주면서 실험하기*
+// if(fDistance<0.1)
+if(fDistance<0.01)
+{
+    Dframe++;
+    if(Dframe>10)
+    {
+        tOK = false;
+        Dframe = 0;
+    }
+}
+else
+    Dframe = 0;
+
+if(!tOK && mState==OK)
+{
+    Nframe++;
+    mpMap->ChangeNframe(Nframe);
+    return;
+}
+    
