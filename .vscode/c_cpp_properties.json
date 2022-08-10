@@ -1,0 +1,26 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/jiwon/catkin_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/jiwon/catkin_ws/src/gps_umd/gps_common/include/**",
+        "/home/jiwon/catkin_ws/src/gps_test/include/**",
+        "/home/jiwon/catkin_ws/src/learning_tf/include/**",
+        "/home/jiwon/catkin_ws/src/message_test/include/**",
+        "/home/jiwon/catkin_ws/src/realsense-ros/realsense2_camera/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
